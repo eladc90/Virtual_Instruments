@@ -2,6 +2,8 @@ import urllib.request
 import cv2
 import numpy as np
 import time
+
+
 URL = "http://192.168.1.7:8080/shot.jpg"
 while True:
     img_arr = np.array(bytearray(urllib.request.urlopen(URL).read()),dtype=np.uint8)

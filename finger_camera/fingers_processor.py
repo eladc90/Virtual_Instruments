@@ -11,8 +11,8 @@ class Instrument_hands_processor:
                   '[0, 1, 1, 1, 1]': 'F',
                                         }
                     
-    def __init__(self):
-        self._camera_data = Rec_Camera_Hand()
+    def __init__(self, source=0):
+        self._camera_data = Rec_Camera_Hand(source)
         self._saxophone_player = Saxophone_Player()
         self._current_fingers = []
         self._prev_fingers = []

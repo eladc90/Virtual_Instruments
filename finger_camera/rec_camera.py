@@ -19,7 +19,11 @@ class Rec_Camera_Hand:
             
             
     def Get_hands_status(self):
-        image = self._get_image()
+        if self.source == 0:
+            image = self._get_image()
+        elif self.source == 1:
+            image = self._get_image_phone()
+            
         q = cv2.waitKey(1)
         hands, image = self.detector.findHands(image, flipType=False)
         cv2.imshow("image", image)
@@ -30,12 +34,9 @@ class Rec_Camera_Hand:
         return None, None
 
     
-    
-    
     def _get_image(self):
         ret, frame = self.vid.read()
         return frame
-        
         
     
     def _get_image_phone(self):
