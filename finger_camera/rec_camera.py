@@ -10,6 +10,8 @@ class Rec_Camera_Hand:
         self.source = source
         self.URL = "http://192.168.1.7:8080/shot.jpg"
         self.detector = HandDetector(detectionCon=0.8, maxHands=1)
+        self.vid = cv2.VideoCapture(0)
+        
         
     def start_rec_camera(self):
         if self.source == 0:
@@ -27,8 +29,16 @@ class Rec_Camera_Hand:
             return hands, fingers
         return None, None
 
-        
+    
+    
+    
     def _get_image(self):
+        ret, frame = self.vid.read()
+        return frame
+        
+        
+    
+    def _get_image_phone(self):
         img_arr = np.array(bytearray(urllib.request.urlopen(self.URL).read()),dtype=np.uint8)
         image = cv2.imdecode(img_arr,-1)
         image = cv2.flip(image, 0)
