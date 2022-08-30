@@ -1,6 +1,11 @@
 import pygame.midi
 import time
-
+from ctypes import cast, POINTER
+import time
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+ 
+ 
 class Saxophone_Player:
 
     def __init__(self) -> None:
@@ -10,10 +15,42 @@ class Saxophone_Player:
         self.note_D = 50
         self.note_E = 52
         self.note_F = 53
+        pygame.init()
         pygame.midi.init()
-        self.player = pygame.midi.Output(device)
+        port = pygame.midi.get_default_output_id()
+        print(port)
+        self.player = pygame.midi.Output(port, 0)
         self.player.set_instrument(instrument)
         self.volume = 127
+        devices = AudioUtilities.GetSpeakers()
+# print(devices)
+        interface = devices.Activate(
+           IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+        self.volume_set = cast(interface, POINTER(IAudioEndpointVolume))
+    
+    
+    def change_volume(self, vol):
+        if vol != 0:
+            vol = vol * -1 
+            print(vol)
+            dev = 380 - 245 
+            vol = vol + 245
+            print(vol)
+            vol = (vol/dev)
+            print(f'the final vol {vol}')
+            # self.volume = int(vol)
+            # self.player.change_vol(self.note_C, int(vol))
+            self.volume_set.SetMasterVolumeLevel(vol, None) #max
+            try:
+                # print(pygame.midi.get_device_info(0))
+                pass
+            except Exception as ex:
+                # print(ex)
+                pass
+                
+            # print(type(self.channel1))
+            # pygame.mixer.music.set_volume(0.8)
+        
     
     def play_C(self):
         self.player.note_on(self.note_C, self.volume)

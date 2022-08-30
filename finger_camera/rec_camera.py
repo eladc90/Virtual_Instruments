@@ -26,12 +26,12 @@ class Rec_Camera_Hand:
             
         q = cv2.waitKey(1)
         hands, image = self.detector.findHands(image, flipType=False)
-        cv2.imshow("image", image)
+        
         if hands:
             right_hand = hands[0]
             fingers = self.detector.fingersUp(right_hand)
-            return hands, fingers
-        return None, None
+            return hands, fingers, image
+        return None, None, image
 
     
     def _get_image(self):

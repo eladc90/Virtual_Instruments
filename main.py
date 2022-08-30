@@ -4,8 +4,8 @@ from sax_player import Saxophone_Player
 
 
 def start_playing():
-    player = Instrument_hands_processor()
-    # player = Instrument_hands_processor(1) if using phone camera
+    # player = Instrument_hands_processor()
+    player = Instrument_hands_processor(1) # if using phone camera
     player.Start()
     
     
