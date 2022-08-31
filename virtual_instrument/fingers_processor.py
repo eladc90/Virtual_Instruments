@@ -20,7 +20,7 @@ class Instrument_hands_processor:
         self.volume = 400
         self.notes_dict = Saxophone_fingering.FINGERING_LIST
         self.Notes_number = Saxophone_fingering.NOTES_NUMBER
-        self.rectangle_size = 10
+        self.rectangle_size = 17
         self.image = None
         self.thickness = 3
         
@@ -55,7 +55,7 @@ class Instrument_hands_processor:
     
     def _Get_hand_status(self, hand: list, hand_status: list, fingers_list):
         for finger in fingers_list:
-            middle_x, middle_y = self._Get_finger_point_location(finger, hand["lmList"], self.fingers_points.FINGER_TIP_MIDDLE)
+            middle_x, middle_y = self._Get_finger_point_location(finger, hand["lmList"], self.fingers_points.FINGER_BASE_MIDDLE)
             self._draw_hands_rectangle(middle_x, middle_y)
             tip_x, tip_y = self._Get_finger_point_location(finger, hand["lmList"], self.fingers_points.FINGER_TIP)
             if tip_x is None or tip_y is None or middle_x is None or middle_y is None:
