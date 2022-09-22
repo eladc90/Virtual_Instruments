@@ -18,7 +18,12 @@ class FINGERS_POINTS:
         self.fifth  :list = [17, 18, 19, 20] # little finger
         self.middle_hand: list = [0]
         
-        
+
+    def get_hands_fingers_indexes(self):
+        hands_indexes = [[15, 27], [27, 39], [39, 51]]
+        return hands_indexes
+    
+    
     def get_finger_as_list(self):
         return [self.first, self.second, self.third, self.fourth, self.fifth]
         
@@ -31,14 +36,14 @@ class FINGERS_POINTS:
         return [self.second, self.third, self.fourth]
         
 class Saxophone_fingering:
-    FINGERING_LIST = { '[1, 1, 1, 1, 1, 1, 1]': 'C',
-                       '[1, 1, 1, 1, 1, 1, 0]': 'D',
-                       '[1, 1, 1, 1, 1, 0, 0]': 'E',
-                       '[1, 1, 1, 1, 0, 0, 0]': 'F',
-                       '[1, 1, 1, 0, 0, 0, 0]': 'G',
-                       '[1, 1, 0, 0, 0, 0, 0]': 'A',
-                       '[1, 0, 0, 0, 0, 0, 0]': 'B',
-                       '[0, 1, 0, 0, 0, 0, 0]': 'C2',
+    FINGERING_LIST = { '[1, 1, 1, 1, 1, 1]': 'C',
+                       '[1, 1, 1, 1, 1, 1]': 'D',
+                       '[1, 1, 1, 1, 1, 0]': 'E',
+                       '[1, 1, 1, 1, 0, 0]': 'F',
+                       '[1, 1, 1, 0, 0, 0]': 'G',
+                       '[1, 1, 0, 0, 0, 0]': 'A',
+                       '[1, 0, 0, 0, 0, 0]': 'B',
+                       '[0, 1, 0, 0, 0, 0]': 'C2',
                                               }    
     
     NOTES_NUMBER = {'C' :48,   

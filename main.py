@@ -6,6 +6,7 @@ from virtual_instrument.sax_player import Saxophone_Player
 def start_playing():
     player = Instrument_hands_processor()
     # player = Instrument_hands_processor(1) # if using phone camera
+    # player.rec_face()
     player.Start()
     
     

@@ -9,7 +9,6 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 class Saxophone_Player:
     def __init__(self) -> None:
         instrument = 57
-
         pygame.init()
         pygame.midi.init()
         port = pygame.midi.get_default_output_id()
